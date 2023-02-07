@@ -2,11 +2,7 @@ var css = document.querySelector("h3");
 var color1 = document.querySelector(".color1");
 var color2 = document.querySelector(".color2");
 var body = document.getElementById("gradient");
-var color1a = document.getElementById("color1");
-var color2a = document.getElementById("color2");
-var random255 = Math.floor(Math.random() * 256) + 1;
 var randomButton = document.querySelector(".random");
-var stringInt = random255.toString();
 
 function backgroundGradient() {
         body.style.background =
@@ -18,10 +14,18 @@ function backgroundGradient() {
 
         css.textContent = body.style.background + ";";
 }
-
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 function randomRGB() {
-    color1.value = stringInt;
-    color2.value = stringInt;
+    document.getElementById("color1").value = getRandomColor();
+    document.getElementById("color2").value = getRandomColor();
+    backgroundGradient()
 }
 backgroundGradient()
 
